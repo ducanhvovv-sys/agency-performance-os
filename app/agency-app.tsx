@@ -4,7 +4,7 @@ import {
   Users, BarChart3, Filter, Search, Bell, ArrowUpRight, ArrowDownRight 
 } from 'lucide-react';
 
-export default function AgencyOSDashboard() {
+export default function AgencyApp() {
   const [selectedRole, setSelectedRole] = useState('Giám đốc');
   const [ownerFilter, setOwnerFilter] = useState('Tất cả');
   const [projectFilter, setProjectFilter] = useState('Tất cả');
