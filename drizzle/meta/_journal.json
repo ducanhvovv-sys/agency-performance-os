@@ -1,0 +1,48 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1785685775874,
+      "tag": "0000_windy_roland_deschain",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1785689584573,
+      "tag": "0001_short_the_hand",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1785718857365,
+      "tag": "0002_fuzzy_winter_soldier",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1785722608273,
+      "tag": "0003_square_shocker",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1785723247380,
+      "tag": "0004_deep_stingray",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1785724170699,
+      "tag": "0005_mature_dreadnoughts",
+      "breakpoints": true
+    }
+  ]
+}

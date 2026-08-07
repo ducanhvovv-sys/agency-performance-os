@@ -1,0 +1,6 @@
+Agency Performance OS
+Production version: 3
+Source commit: 768924540de28c742233f509b08d8d33029896c1
+Snapshot date: 2026-08-03
+Production URL: https://agency-performance-os.ducanhne.chatgpt.site
+Production D1 records and secrets are not included in this package.
