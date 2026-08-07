@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
-import { 
-  TrendingUp, AlertTriangle, CheckCircle2, Clock, 
-  Users, BarChart3, Filter, Search, Bell, ArrowUpRight, ArrowDownRight 
-} from 'lucide-react';
 
 export default function AgencyApp() {
-  const [selectedRole, setSelectedRole] = useState('Giám đốc');
-  const [ownerFilter, setOwnerFilter] = useState('Tất cả');
-  const [projectFilter, setProjectFilter] = useState('Tất cả');
-  const [timeFilter, setTimeFilter] = useState('Tháng này');
+  const [selectedRole, setSelectedRole] = useState<string>('Giám đốc');
+  const [ownerFilter, setOwnerFilter] = useState<string>('Tất cả');
+  const [projectFilter, setProjectFilter] = useState<string>('Tất cả');
+  const [timeFilter, setTimeFilter] = useState<string>('Tháng này');
+
+  const roles = ['Nhân viên', 'Leader', 'Giám đốc', 'Admin'];
+  const owners = ['Tất cả', 'Của tôi', 'Team Content', 'Team Ads'];
+  const projects = ['Tất cả', 'BIDV Gift', 'Dược sĩ Giang', 'ĐINH Scent'];
+  const times = ['Tháng này', 'Quý này', 'Tất cả'];
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 font-sans">
       
       {/* 1. TOP NAVBAR & ROLE SWITCHER */}
-      <header className="sticky top-0 z-30 flex h-14 items-center justify-between border-b border-slate-200/80 bg-white/95 px-6 backdrop-blur">
+      <header className="sticky top-0 z-30 flex h-14 items-center justify-between border-b border-slate-200/80 bg-white px-6">
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-2 font-bold text-slate-900 text-lg tracking-tight">
             <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-600 text-xs font-black text-white">AOS</span>
@@ -22,7 +23,9 @@ export default function AgencyApp() {
           </div>
           
           <div className="relative hidden md:block w-72">
-            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-slate-400" />
+            <svg className="absolute left-2.5 top-2.5 h-4 w-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
             <input 
               type="text" 
               placeholder="Tìm dự án, task, nhân sự... (Cmd + K)" 
@@ -33,7 +36,7 @@ export default function AgencyApp() {
 
         <div className="flex items-center gap-3">
           <div className="flex items-center rounded-lg bg-slate-100 p-0.5 text-xs font-medium text-slate-600">
-            {['Nhân viên', 'Leader', 'Giám đốc', 'Admin'].map((role) => (
+            {roles.map((role) => (
               <button
                 key={role}
                 onClick={() => setSelectedRole(role)}
@@ -47,11 +50,6 @@ export default function AgencyApp() {
               </button>
             ))}
           </div>
-          
-          <button className="relative p-2 text-slate-500 hover:text-slate-700">
-            <Bell className="h-4 w-4" />
-            <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-rose-500" />
-          </button>
           
           <div className="h-8 w-8 rounded-full bg-blue-100 font-bold text-blue-700 flex items-center justify-center text-xs border border-blue-200">
             ĐA
@@ -82,12 +80,15 @@ export default function AgencyApp() {
           {/* Pill Filters Bar */}
           <div className="flex flex-wrap items-center gap-3 rounded-xl border border-slate-200/80 bg-white p-2.5 shadow-sm">
             <div className="flex items-center gap-1.5 text-xs font-bold text-slate-500 mr-2">
-              <Filter className="h-3.5 w-3.5" /> LỌC NHANH:
+              <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+              </svg>
+              LỌC NHANH:
             </div>
 
             <div className="flex items-center gap-1 border-r border-slate-200 pr-3">
               <span className="text-[11px] font-semibold text-slate-400 mr-1">NHÂN SỰ:</span>
-              {['Tất cả', 'Của tôi', 'Team Content', 'Team Ads'].map((item) => (
+              {owners.map((item) => (
                 <button
                   key={item}
                   onClick={() => setOwnerFilter(item)}
@@ -104,7 +105,7 @@ export default function AgencyApp() {
 
             <div className="flex items-center gap-1 border-r border-slate-200 pr-3">
               <span className="text-[11px] font-semibold text-slate-400 mr-1">DỰ ÁN:</span>
-              {['Tất cả', 'BIDV Gift', 'Dược sĩ Giang', 'ĐINH Scent'].map((item) => (
+              {projects.map((item) => (
                 <button
                   key={item}
                   onClick={() => setProjectFilter(item)}
@@ -120,7 +121,7 @@ export default function AgencyApp() {
             </div>
 
             <div className="flex items-center gap-1">
-              {['Tháng này', 'Quý này', 'Tất cả'].map((item) => (
+              {times.map((item) => (
                 <button
                   key={item}
                   onClick={() => setTimeFilter(item)}
@@ -143,7 +144,7 @@ export default function AgencyApp() {
             <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">KPI TOÀN AGENCY</span>
             <div className="mt-1 text-3xl font-black font-mono text-slate-900">92.5%</div>
             <div className="mt-2 flex items-center gap-1 text-xs font-bold text-emerald-600">
-              <ArrowUpRight className="h-3.5 w-3.5" /> +4.2% <span className="font-normal text-slate-400">vs tuần trước</span>
+              ▲ +4.2% <span className="font-normal text-slate-400">vs tuần trước</span>
             </div>
           </div>
 
@@ -159,7 +160,7 @@ export default function AgencyApp() {
             <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">TỈ LỆ ĐÚNG HẠN</span>
             <div className="mt-1 text-3xl font-black font-mono text-slate-900">88%</div>
             <div className="mt-2 flex items-center gap-1 text-xs font-bold text-rose-600">
-              <ArrowDownRight className="h-3.5 w-3.5" /> -2.0% <span className="font-normal text-slate-400">mức mục tiêu 95%</span>
+              ▼ -2.0% <span className="font-normal text-slate-400">mức mục tiêu 95%</span>
             </div>
           </div>
 
@@ -175,7 +176,7 @@ export default function AgencyApp() {
             <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">CONTENT WIN RATE</span>
             <div className="mt-1 text-3xl font-black font-mono text-slate-900">64%</div>
             <div className="mt-2 flex items-center gap-1 text-xs font-bold text-emerald-600">
-              <ArrowUpRight className="h-3.5 w-3.5" /> +8.1% <span className="font-normal text-slate-400">vượt trung bình</span>
+              ▲ +8.1% <span className="font-normal text-slate-400">vượt trung bình</span>
             </div>
           </div>
         </div>
@@ -230,15 +231,4 @@ export default function AgencyApp() {
                   <span className="text-[10px] text-slate-400">10:15</span>
                 </div>
                 <p className="text-xs text-slate-600">Nhân sự Hoàng Yến đang gánh 125% công suất.</p>
-                <span className="inline-block rounded border border-amber-200 bg-amber-50 px-2 py-0.5 text-[10px] font-bold text-amber-700">
-                  Cần phân bổ lại
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </main>
-    </div>
-  );
-}
+                <span className="inline-block rounded border border-amber-200 bg-amber-50 px-2 py-0.5 text
